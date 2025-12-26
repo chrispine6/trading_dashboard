@@ -1,16 +1,73 @@
-# React + Vite
+# Trading Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based trading dashboard that displays real-time clocks for Tokyo, London, and New York markets with countdown timers to market open.
 
-Currently, two official plugins are available:
+![Trading Dashboard](https://github.com/user-attachments/assets/990046b5-32f6-45ff-adba-bef36f82f713)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Real-time Clocks**: Displays current time in Tokyo, London, and New York timezones
+- **Market Status**: Shows whether each market is currently open or closed
+- **Countdown Timers**: Displays time remaining until next market open
+- **Dark Mode**: Sleek black-themed interface optimized for trading environments
+- **Responsive Design**: Works on desktop and mobile devices
+- **Visual Indicators**: Color-coded status indicators (green for open, red for closed)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Market Hours
 
-## Expanding the ESLint configuration
+- **Tokyo Stock Exchange**: Opens at 9:00 AM JST
+- **London Stock Exchange**: Opens at 8:00 AM GMT
+- **New York Stock Exchange**: Opens at 9:30 AM EST
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All markets are closed on weekends.
+
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173/`
+
+## Build
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## Linting
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+## Preview Production Build
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Technologies
+
+- React 19
+- Vite
+- CSS3
+- JavaScript ES6+
+
+## License
+
+MIT
