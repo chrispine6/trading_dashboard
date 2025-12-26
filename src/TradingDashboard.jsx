@@ -49,11 +49,29 @@ const formatDate = (date, timezone) => {
 };
 
 const getTimeInTimezone = (currentTime, timezone) => {
-  const timeString = currentTime.toLocaleString('en-US', {
+  // Create a formatter for the timezone
+  const formatter = new Intl.DateTimeFormat('en-US', {
     timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
     hour12: false,
   });
-  return new Date(timeString);
+  
+  const parts = formatter.formatToParts(currentTime);
+  const get = (type) => parts.find(p => p.type === type).value;
+  
+  return new Date(
+    get('year'),
+    get('month') - 1,
+    get('day'),
+    get('hour'),
+    get('minute'),
+    get('second')
+  );
 };
 
 const getNextMarketOpen = (currentTime, market) => {
@@ -69,11 +87,9 @@ const getNextMarketOpen = (currentTime, market) => {
   }
 
   // Skip weekends for all markets
-  const dayOfWeek = nextOpen.getDay();
-  if (dayOfWeek === 0) { // Sunday
+  // Keep adding days until we reach a weekday
+  while (nextOpen.getDay() === 0 || nextOpen.getDay() === 6) {
     nextOpen.setDate(nextOpen.getDate() + 1);
-  } else if (dayOfWeek === 6) { // Saturday
-    nextOpen.setDate(nextOpen.getDate() + 2);
   }
 
   return nextOpen;
